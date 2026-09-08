@@ -1,18 +1,18 @@
 #######################
 ### ZSH SETUP START ###
 #######################
-
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/GitHub/powerlevel10k/powerlevel10k.zsh-theme
+# Source theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Standard plugins can be found in $ZSH/plugins/
-plugins=( git zsh-autosuggestions )
+plugins=( z git zsh-autosuggestions )
 
 # Manually added to PATH, lol
 export PATH="/home/$USER/.local/bin:$PATH"
@@ -41,7 +41,7 @@ alias klok='tty-clock -scbtnr'
 alias audio='sh ~/.tmux-audio.sh'
 
 # Tools
-alias ff='kitten icat -n --align=left ~/Pictures/Fastfetch/Resize/lainFF.gif | fastfetch --raw - --config ~/.config/fastfetch/presets/main.jsonc
+alias ff='fastfetch
 todo list'
 alias tra='trans'
 
@@ -53,5 +53,5 @@ alias zc='sudo nano ~/.zshrc'
 ### END of ALIASES ###
 ######################
 
-wal -R
 clear
+fastfetch

@@ -3,15 +3,15 @@
 
 * {
     font: "JetBrains Mono";
-    bg0:    rgba(17,28,24,1);
-    bg1:    rgba(17,28,24,1);
-    bg2:    #111c18;
-    bg3:    #549E6A;
+    bg0:    #110b0d;
+    bg1:    #110b0d;
+    bg2:    #110b0d;
+    bg3:    #515b5c;
 
-    fg0:    #afb28a;
-    fg1:    #afb28a;
-    fg2:    #afb28a;
-    fg3:    #afb28a;
+    fg0:    #f6d56a;
+    fg1:    #f6d56a;
+    fg2:    #f6d56a;
+    fg3:    #f6d56a;
 
 }
 

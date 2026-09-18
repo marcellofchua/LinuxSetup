@@ -1,0 +1,69 @@
+#######################
+### ZSH SETUP START ###
+#######################
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Source theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Standard plugins can be found in $ZSH/plugins/
+plugins=( z git zsh-autosuggestions )
+
+# Manually added to PATH, lol
+export PATH="/home/$USER/.local/bin:$PATH"
+
+# ZSH Patina Syntax Highlighting
+eval "$(zsh-patina activate)"
+
+#####################
+### ZSH SETUP END ###
+#####################
+
+########################
+### START of ALIASES ###
+########################
+# Terminal Defaults
+alias hypr="start-hyprland"
+alias ls="eza -x --color=auto"
+alias grep="grep --color=auto"
+alias date="date +%D' '%A' '%r"
+alias yz="yazi"
+alias ka="killall"
+
+# Shortcuts
+alias bs="brightnessctl s"
+alias klok="tty-clock -scbtnr"
+alias audio="sh ~/.tmux-audio.sh"
+
+# Tools
+alias ff="fastfetch
+todo list"
+alias tra="trans"
+alias madc="mullvad connect"
+alias madd="mullvad disconnect"
+alias mads="mullvad status"
+alias mada="mullvad account"
+
+# Configuration Files
+alias hc="sudo nano ~/.config/hypr/hyprland.lua"
+alias zc="sudo nano ~/.zshrc"
+
+######################
+### END of ALIASES ###
+######################
+
+#############
+### TOOLS ###
+#############
+# hex2rgba
+source ~/.tools/hex2rgba.sh
+
+### END OF .ZSHRC ###
+#python
+clear
+fastfetch

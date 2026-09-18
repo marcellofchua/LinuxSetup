@@ -1,18 +1,22 @@
 ---------------------
 -- WORKSPACE RULES --
 ---------------------
--- Control Center
-hl.workspace_rule({ workspace = "1", default_name = "Media" })
-hl.workspace_rule({ workspace = "name:Media", monitor = "eDP-1", layout = "scrolling", layout_opts = { direction = "down"} })
+-- Background Workspace
+hl.workspace_rule({ workspace = "1", default_name = "Background", persistent = true })
+hl.workspace_rule({ workspace = "name:Background", monitor = "eDP-1", layout = "scrolling", layout_opts = { direction = "down"} })
 
 -- Main Workspace
-hl.workspace_rule({ workspace = "2", default_name = "Main" })
+hl.workspace_rule({ workspace = "2", default_name = "Main", persistent = true })
 hl.workspace_rule({ workspace = "name:Main", monitor = "eDP-1", layout = "scrolling", layout_opts = { direction = "down"} })
+
 
 ------------------
 -- WINDOW RULES --
 ------------------
 hl.window_rule({ name = "kitty_width", match = { class = "kitty" }, scrolling_width = 1 })
+hl.window_rule({ name = "firefox_width", match = { class = "firefox" }, scrolling_width = 1 })
+hl.window_rule({ name = "easyeffects_width", match = { class = "com.github.wwmm.easyeffects" }, scrolling_width = 1 })
+
 
 ------------------
 ---- MONITORS ----
@@ -24,6 +28,7 @@ hl.monitor({
     scale    = "1",
 })
 
+
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -31,10 +36,12 @@ local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "rofi -show drun"
 
+
 -------------------
 ---- AUTOSTART ----
 -------------------
 hl.on("hyprland.start", function()
+
 -- Background
 hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
 hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -50,6 +57,7 @@ hl.exec_cmd("mako")
 -- Explicit
 hl.exec_cmd("kitty -- zsh -c 'sh ~/.tmux-audio.sh'", { workspace = "1" })
 hl.exec_cmd("kitty", { workspace = "2" })
+
 end)
 
 -------------------------------
@@ -57,6 +65,7 @@ end)
 -------------------------------
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+
 
 -----------------------
 ----- PERMISSIONS -----
@@ -70,6 +79,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
+
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -168,16 +178,20 @@ hl.config({
     },
 })
 
+
 ----------------
 ----  MISC  ----
 ----------------
 
 hl.config({
     misc = {
+	background_color = 0x0110b0d,
         force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+	disable_splash_rendering	= true,
     },
 })
+
 
 ---------------
 ---- INPUT ----
@@ -196,7 +210,7 @@ hl.config({
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = false,
+            natural_scroll = true,
         },
     },
 })
@@ -220,7 +234,9 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
+-- HOTKEYS / SHORTCUTS
+-- hl.bind(mainMod .. " + ", hl.dsp.exec_cmd())
+
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
@@ -232,7 +248,15 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall waybar"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("waybar"))
-hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("~/GitHub/hypr-tty-dakhilsaver/bin/./dakhilsaver"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/GitHub/hypr-tty-dakhilsaver/bin/./dakhilsaver"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/reading_mode.glsl"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/invert.glsl"))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/gameboy.glsl"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/IBM5151.glsl"))
+hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/outdoor.glsl"))
+hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("python ~/.theme/apply-random-kitty-theme.py"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -259,6 +283,12 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Resize windows with mainMod + Shift + H, J, K, and L
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true}), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true}), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true}), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.resize({ x = 50, y = 0, relative = true}), { repeating = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })

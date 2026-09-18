@@ -18,12 +18,11 @@ cursor_trail		2
 cursor_shape		block
 
 # BEGIN_KITTY_THEME
-# Osaka Jade
 include current-theme.conf
 # END_KITTY_THEME
 
 # BEGIN_KITTY_FONTS
-font_family      family="CaskaydiaCove Nerd Font"
+font_family      family="JetBrains Mono"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto

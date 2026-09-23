@@ -28,30 +28,41 @@ eval "$(zsh-patina activate)"
 ### START of ALIASES ###
 ########################
 # Terminal Defaults
-alias hypr='start-hyprland'
-alias ls='eza -x --color=auto'
-alias grep='grep --color=auto'
+alias hypr="start-hyprland"
+alias ls="eza -x --color=auto"
+alias grep="grep --color=auto"
 alias date="date +%D' '%A' '%r"
-alias yz='yazi'
-alias ka='killall'
+alias yz="yazi"
+alias ka="killall"
 
 # Shortcuts
-alias bs='brightnessctl s'
-alias klok='tty-clock -scbtnr'
-alias audio='sh ~/.tmux-audio.sh'
+alias bs="brightnessctl s"
+alias klok="tty-clock -scbtnr"
+alias audio="sh ~/.tmux-audio.sh"
 
 # Tools
-alias ff='fastfetch
-todo list'
-alias tra='trans'
+alias ff="fastfetch
+todo list"
+alias tra="trans"
+alias madc="mullvad connect"
+alias madd="mullvad disconnect"
+alias mads="mullvad status"
+alias mada="mullvad account"
 
 # Configuration Files
-alias hc='sudo nano ~/.config/hypr/hyprland.lua'
-alias zc='sudo nano ~/.zshrc'
+alias hc="sudo nano ~/.config/hypr/hyprland.lua"
+alias zc="sudo nano ~/.zshrc"
 
 ######################
 ### END of ALIASES ###
 ######################
 
+#############
+### TOOLS ###
+#############
+# hex2rgba
+source ~/.tools/hex2rgba.sh
+
+### END OF .ZSHRC ###
 clear
-fastfetch
+ff

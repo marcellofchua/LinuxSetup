@@ -46,19 +46,19 @@ hl.on("hyprland.start", function()
 hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
 hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-hl.exec_cmd("systemctl --user start hyprpolkit agent")
+hl.exec_cmd("systemctl --user start hyprpolkitagent")
 hl.exec_cmd("hyprctl setcursor Neuro-sama 24")
 hl.exec_cmd("hyprpm reload -m")
 hl.exec_cmd("hypridle")
-hl.exec_cmd("awww-daemon")
 hl.exec_cmd("waybar")
 hl.exec_cmd("mako")
 
--- Explicit
+-- Main
 hl.exec_cmd("kitty -- zsh -c 'sh ~/.tmux-audio.sh'", { workspace = "1" })
 hl.exec_cmd("kitty", { workspace = "2" })
 
 end)
+
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -238,7 +238,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- hl.bind(mainMod .. " + ", hl.dsp.exec_cmd())
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+local closeWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
@@ -246,13 +246,13 @@ hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall waybar"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("waybar"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall waybar || waybar"), { release = true })
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/GitHub/hypr-tty-dakhilsaver/bin/./dakhilsaver"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/reading_mode.glsl"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/invert.glsl"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/clarity_inefficient.glsl"))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/gameboy.glsl"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/IBM5151.glsl"))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/outdoor.glsl"))

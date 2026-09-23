@@ -1,6 +1,6 @@
 [soe][BassEnhancer#0]
-amount=2
 blend=-8
+floor=70
 harmonics=9
-inputGain=-2
-scope=170
+inputGain=-3
+scope=220

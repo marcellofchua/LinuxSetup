@@ -1,5 +1,5 @@
 [Presets]
-lastLoadedOutputPreset=AS10 - DGD
+lastLoadedOutputPreset=EarfunBoomL
 
 [Spectrum]
 height=420
@@ -9,10 +9,10 @@ spectrumShape=lines
 inputDevice=bluez_input.F4:4E:FC:13:38:A3
 
 [StreamOutputs]
-mostUsedPresets=AS10 - Psychoframe,AS10 - Template,EarfunBoomL,AS10 - Vildhjarta,C6
+mostUsedPresets=AS10 - Psychoframe,EarfunBoomL,AS10 - Template,AS10 - Vildhjarta,C6
 outputDevice=bluez_output.F4_4E_FC_13_38_A3.1
-plugins=bass_enhancer#0,equalizer#0,stereo_tools#0,limiter#0
-usedPresets=EarfunBoomL:17,C6:11,AS10 - Template:18,AS10 - Dealer:9,AS10 - Peelingflesh:10,AS10 - Psychoframe:22,AS10 - Rev3rent:9,AS10 - Vildhjarta:15,AS10 - To The Grave:10,AS10 - DGD:7
+plugins=bass_enhancer#0,stereo_tools#1,equalizer#0,limiter#0
+usedPresets=EarfunBoomL:21,C6:15,AS10 - Template:19,AS10 - Dealer:9,AS10 - Peelingflesh:11,AS10 - Psychoframe:22,AS10 - Rev3rent:9,AS10 - Vildhjarta:15,AS10 - To The Grave:10,AS10 - DGD:9,C6 - Instrumental:5
 visiblePage=pluginsPage
 visiblePlugin=equalizer#0
 

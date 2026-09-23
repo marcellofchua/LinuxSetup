@@ -1,4 +1,6 @@
 [soe][StereoTools#0]
 inputGain=-0.7
 slev=0.7
-softclip=true
+
+[soe][StereoTools#1]
+mode=5

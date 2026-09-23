@@ -1,4 +1,5 @@
 [soe][Limiter#0]
 attack=0.25
+mode=1
 release=0.25
-threshold=-6
+threshold=-1.5

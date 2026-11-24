@@ -1,33 +1,7 @@
----------------------
--- WORKSPACE RULES --
----------------------
--- Background Workspace
-hl.workspace_rule({ workspace = "1", default_name = "Background", persistent = true })
-hl.workspace_rule({ workspace = "name:Background", monitor = "eDP-1", layout = "scrolling", layout_opts = { direction = "down"} })
-
--- Main Workspace
-hl.workspace_rule({ workspace = "2", default_name = "Main", persistent = true })
-hl.workspace_rule({ workspace = "name:Main", monitor = "eDP-1", layout = "scrolling", layout_opts = { direction = "down"} })
-
-
-------------------
--- WINDOW RULES --
-------------------
-hl.window_rule({ name = "kitty_width", match = { class = "kitty" }, scrolling_width = 1 })
-hl.window_rule({ name = "firefox_width", match = { class = "firefox" }, scrolling_width = 1 })
-hl.window_rule({ name = "easyeffects_width", match = { class = "com.github.wwmm.easyeffects" }, scrolling_width = 1 })
-
-
-------------------
----- MONITORS ----
-------------------
-hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "1",
-})
-
+------------------------
+---- THEME SETTINGS ----
+------------------------
+local colors = require("colors")
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -48,16 +22,78 @@ hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CU
 hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 hl.exec_cmd("systemctl --user start hyprpolkitagent")
 hl.exec_cmd("hyprctl setcursor Neuro-sama 24")
-hl.exec_cmd("hyprpm reload -m")
 hl.exec_cmd("hypridle")
 hl.exec_cmd("waybar")
 hl.exec_cmd("mako")
 
--- Main
-hl.exec_cmd("kitty -- zsh -c 'sh ~/.tmux-audio.sh'", { workspace = "1" })
-hl.exec_cmd("kitty", { workspace = "2" })
-
+-- Foreground
 end)
+
+---------------------
+-- WORKSPACE RULES --
+---------------------
+-- Scrolling Workspace
+hl.workspace_rule({
+	workspace = "1",
+	default_name = "Scroll",
+	monitor = "eDP-1",
+	layout = "scrolling",
+	layout_opts = { direction = "down" } 
+})
+
+
+------------------
+-- WINDOW RULES --
+------------------
+hl.window_rule({
+	name = "kitty_width",
+	match = { class = "kitty" },
+	scrolling_width = 1.0
+})
+hl.window_rule({
+	name = "easyeffects_width",
+	match = { class = "com.github.wwmm.easyeffects" },
+	scrolling_width = 1.0
+})
+
+
+------------------
+---- MONITORS ----
+------------------
+-- OUTPUT DEFAULTS
+hl.monitor({
+    output   = "",
+    mode     = "preferred",
+    position = "auto",
+    scale    = "1",
+})
+
+-- INTERNAL MONITOR
+hl.monitor({
+    output	= "eDP-1",
+    mode	= "1920x1200@60.00Hz",
+    position	= "0x0",
+    transform	= 0,
+    scale	= 1,
+})
+
+-- LEFT MONITOR
+hl.monitor({
+    output	= "HDMI-A-1",
+    mode	= "1920x1080@60.00Hz",
+    position	= "-1920x0",
+    transform	= 0,
+    scale	= 1,
+})
+
+-- RIGHT MONITOR
+hl.monitor({
+    output	= "HDMI-A-1",
+    mode	= "1920x1080@60.00Hz",
+    position	= "1920x0",
+    transform	= 0,
+    scale	= 1,
+})
 
 
 -------------------------------
@@ -68,59 +104,30 @@ hl.env("HYPRCURSOR_SIZE", "24")
 
 
 -----------------------
------ PERMISSIONS -----
------------------------
--- hl.config({
---   ecosystem = {
---     enforce_permissions = true,
---   },
--- })
-
--- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
--- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
--- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
-
-
------------------------
 ---- LOOK AND FEEL ----
 -----------------------
 hl.config({
     general = {
-        gaps_in  = 0,
+        gaps_in = 0,
         gaps_out = 0,
-
         border_size = 0,
 
         col = {
-            active_border   = "rgba(00000000)",
-            inactive_border = "rgba(ffffffff)",
+            active_border = {
+                colors = { colors.blue, colors.cyan },
+                angle = 0,
+            },
+            inactive_border = colors.gray,
         },
-
-        resize_on_border = false,
-        allow_tearing = false,
-
-        layout = "dwindle",
     },
 
     decoration = {
-        rounding       = 0,
-        rounding_power = 0,
-
-        active_opacity   = 1.0,
-        inactive_opacity = 0.9,
-
-        shadow = {
-            enabled      = false,
-            range        = 0,
-            render_power = 0,
-            color        = 0x00000000,
+        blur = {
+            enabled = false,
         },
 
-        blur = {
-            enabled   = false,
-            size      = 0,
-            passes    = 0,
-            vibrancy  = 0,
+        shadow = {
+            enabled = false,
         },
     },
 
@@ -182,13 +189,12 @@ hl.config({
 ----------------
 ----  MISC  ----
 ----------------
-
 hl.config({
     misc = {
-	background_color = 0x0110b0d,
+	background_color = "0x111c1a14",
         force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
-	disable_splash_rendering	= true,
+	disable_splash_rendering	= true
     },
 })
 
@@ -196,7 +202,6 @@ hl.config({
 ---------------
 ---- INPUT ----
 ---------------
-
 hl.config({
     input = {
         kb_layout  = "us",
@@ -231,32 +236,29 @@ hl.device({
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
-
+-- Set main modified key
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
--- HOTKEYS / SHORTCUTS
--- hl.bind(mainMod .. " + ", hl.dsp.exec_cmd())
-
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
+-- Main Controls
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region"))
+-- Window Controls
+hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall waybar || waybar"), { release = true })
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/GitHub/hypr-tty-dakhilsaver/bin/./dakhilsaver"))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+-- Shaders
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/reading_mode.glsl"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/invert.glsl"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/clarity_inefficient.glsl"))
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/gameboy.glsl"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/IBM5151.glsl"))
-hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/outdoor.glsl"))
-hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("python ~/.theme/apply-random-kitty-theme.py"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("hyprshade toggle ~/.config/hypr/shaders/outdoor.glsl"))
+-- Program Shortcuts
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("killall waybar || waybar"), { release = true })
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("firefox"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("vesktop"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -271,10 +273,6 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
-
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -338,14 +336,4 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
-})
-
-hl.window_rule({
-    match = { class = "org.hypr_tty_dakhilsaver.eDP_1" },
-    fullscreen = true
-})
-
-hl.window_rule({
-    match = { class = "org.hypr_tty_dakhilsaver.HDMI_A_1" },
-    fullscreen = true
 })

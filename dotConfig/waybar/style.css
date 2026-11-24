@@ -1,13 +1,15 @@
-* {
+@import "colors.css";
+
+*{
   border: none;
   border-radius: 0;
   min-height: 0;
   font-family: JetBrainsMono Nerd Font;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 window#waybar {
-  background-color: #110b0d;
+  background-color: @vibe_bg;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -17,37 +19,35 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  background-color: #110b0d;
+  background-color: @vibe_bg;
 }
 
 #workspaces button {
   all: initial;
-  /* Remove GTK theme values (waybar #1351) */
   min-width: 0;
-  /* Fix weird spacing in materia (waybar #450) */
   box-shadow: inset 0 -3px transparent;
-  /* Use box-shadow instead of border so the text isn't offset */
-  padding: 6px 18px;
-  margin: 6px 3px;
-  border-radius: 4px;
-  background-color: #f6d56a;
-  color: #110b0d;
+  padding: 0px 15px;
+  margin: 0px 0px;
+  border-radius: 0px;
+  background-color: @vibe-fg;
+  color: @vibe-bg;
 }
 
 #workspaces button.active {
-  color: #110b0d;
-  background-color: #f6d56a;
+  color: @vibe-bg;
+  background-color: @vibe-fg;
+  margin: 0px 0px;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  color: #110b0d;
-  background-color: #110b0d;
+  color: @vibe-bg;
+  background-color: @vibe-bg;
 }
 
 #workspaces button.urgent {
-  background-color: #110b0d;
+  background-color: @vibe-bg;
 }
 
 #memory,
@@ -58,76 +58,85 @@ window#waybar.hidden {
 #network,
 #clock,
 #tray {
-  border-radius: 4px;
-  margin: 6px 3px;
-  padding: 6px 12px;
-  background-color: #110b0d;
-  color: #110b0d;
+  border-radius: 0px;
+  margin: 0px 5px;
+  padding: 0px 10px;
+  background-color: @vibe-bg;
+  color: @vibe-bg;
 }
 
 #custom-power {
-  margin-right: 6px;
+  margin-right: 5px;
 }
 
 #custom-logo {
-  padding-right: 7px;
-  padding-left: 7px;
-  margin-left: 5px;
-  font-size: 15px;
-  border-radius: 8px 0px 0px 8px;
-  color: #f6d56a;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+  border-radius: 0px 0px 0px 0px;
+  color: #bb7774;
 }
 
 #memory {
-  background-color: #f6d56a;
+  background-color: @vibe-fg;
+  margin: 0px 0px;
 }
 
 #battery {
-  background-color: #f6d56a;
+  background-color: @vibe-fg;
+  margin: 0px 0px;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  background-color: #f6d56a;
-  color: #f6d56a;
+  background-color: @vibe-fg;
+  color: @vibe-bg;
 }
 
 #battery.charging {
-  background-color: #f6d56a;
-  color: #f6d56a;
+  background-color: @vibe-fg;
+  color: @vibe-bg;
+  margin: 0px 0px;
 }
 
 #backlight {
-  background-color: #f6d56a;
+  background-color: @vibe-fg;
+  margin: 0px 0px;
+
 }
 
 #wireplumber {
-  background-color: #f6d56a;
+  background-color: @vibe-fg;
+  margin: 0px 0px;
 }
 
 #network {
-  background-color: #f6d56a;
-  padding-right: 17px;
+  background-color: @vibe-fg;
+  padding-right: 15px;
+  margin: 0px 0px;
 }
 
 #clock {
   font-family: JetBrainsMono Nerd Font;
-  background-color: #f6d56a;
+  background-color: @vibe-bg;
+  margin: 0px 0px;
 }
 
 #custom-power {
-  background-color: #f6d56a;
+  background-color: @vibe-fg;
+  margin: 0px 0px;
 }
 
 
 tooltip {
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 15px;
-  background-color: #f6d56a;
+  background-color: @vibe-fg;
 }
 
 tooltip label {
-  padding: 5px;
-  background-color: #f6d56a;
+  padding: 15px;
+  background-color: @vibe-fg;
 }

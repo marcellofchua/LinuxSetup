@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 0,
-    "height": 34,
+    "height": 32,
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces"
@@ -30,22 +30,21 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "default": "☯",
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "active": "😈",
-            "urgent": "🔥",
+            "default": "↕",
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "active": "🐧",
+            "urgent": "⚠️",
         },
         "persistent-workspaces": {
             "1": [],
-            "2": []
         }
     },
     "memory": {
@@ -59,7 +58,7 @@
     "clock": {
         "tooltip-format": "{calendar}",
         "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%I:%M %p}"
+        "format": "{:%I:%M %p}"
     },
     "network": {
         "format-wifi" : "{icon}",
@@ -89,7 +88,7 @@
         "scroll-step": 1
     },
     "custom/logo": {
-        "format": "  ",
+        "format": " ",
         "tooltip": false,
         "on-click": "rofi -show drun"
     },
@@ -124,14 +123,14 @@
         "format-full": "Charged ",
         "interval": 5,
         "states": {
-            "warning": 20,
-            "critical": 10
-        },
+            "warning": 50,
+            "critical": 25,
+    },
         "tooltip": false
     },
     "custom/power": {
-        "format": "󰤆",
+        "format": "🫡",
         "tooltip": false,
-        "on-click": ""
+        "on-click": "hyprlock"
     }
 }

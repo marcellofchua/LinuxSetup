@@ -1,0 +1,10 @@
+/* Generated automatically. Do not edit. */
+* {
+    vibe-bg:       #1c1a14;
+    vibe-panel:    #0e0e04;
+    vibe-fg:       #cacbb9;
+    vibe-muted:    #989876;
+    vibe-selected: #515a45;
+    vibe-accent:   #bb7774;
+    vibe-bright:   #c9cbac;
+}

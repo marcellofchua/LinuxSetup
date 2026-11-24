@@ -1,0 +1,17 @@
+* {
+    font: "JetBrains Mono";
+    bg0:    #1c1a14FF;
+    bg1:    #cacbb9FF;
+    bg2:    #bb7774FF;
+    bg3:    #989876FF;
+
+    fg0:    #1c1a14FF;
+    fg1:    #cacbb9FF;
+    fg2:    #bb7774FF;
+    fg3:    #989876FF;
+
+}
+
+@import "theme-colors.rasi"
+@import "template/main-template.rasi"
+

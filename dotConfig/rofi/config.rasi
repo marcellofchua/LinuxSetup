@@ -1,8 +1,6 @@
-/** Basic config file **/
-
 configuration {
   show-icons:         true;
   icon-theme:         "Chicago95";
 }
 
-@theme "/home/xue/.config/rofi/themes/rounded-white.rasi"
+@theme "/home/xue/.config/rofi/themes/main.rasi"

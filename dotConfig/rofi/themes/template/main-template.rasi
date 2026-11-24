@@ -1,0 +1,92 @@
+* {
+    font:   "JetBrains Mono 12";
+
+    background-color:   transparent;
+    text-color:         @fg1;
+
+    margin:     4px;
+    padding:    4px;
+    spacing:    4px;
+}
+
+window {
+    location:       north;
+    y-offset:       calc(240px);
+    width:          1200;
+    border-radius:  0px;
+    background-color:   @bg0;
+}
+
+mainbox {
+    padding:    4px;
+}
+
+inputbar {
+    background-color:   @bg0;
+    border-color:       @bg0;
+
+    border:         4px;
+    border-radius:  0px;
+
+    padding:    4px 12px;
+    spacing:    4px;
+    children:   [ prompt, entry ];
+}
+
+prompt {
+    text-color: @fg1;
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @fg1;
+}
+
+message {
+    margin:             4px 0 0;
+    border-radius:      0px;
+    border-color:       @bg0;
+    background-color:   @bg0;
+}
+
+textbox {
+    padding:    4px 24px;
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     4px 0 0;
+    lines:      10;
+    columns:    2;
+
+    fixed-height: true;
+}
+
+element {
+    padding:        4px 12px;
+    spacing:        4px;
+    border-radius:  0px;
+}
+
+element normal active {
+    text-color: @fg1;
+}
+
+element alternate active {
+    text-color: @fg1;
+}
+
+element selected normal, element selected active {
+    background-color:   @fg2;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+}
+

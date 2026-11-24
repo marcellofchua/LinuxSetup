@@ -1,13 +1,22 @@
-# Text
-font="JetBrains Mono 12"
-
-# Colors
-background-color=#110b0d
-text-color=#f6d56a
-
-# Box
+# Window
 width=420
 height=69
-border-size=0
-outer-margin=10
-padding=10
+border-size=2
+anchor=top-center
+layer=top
+max-visible=3
+default-timeout=20000
+
+# Margins
+margin=6
+outer-margin=6
+padding=6
+
+# Colors
+background-color=#1c1a14
+text-color=#cacbb9
+border-color=#cacbb9
+
+# Text
+font="JetBrains Mono 12"
+text-alignment=center
